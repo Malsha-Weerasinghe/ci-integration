@@ -1,0 +1,30 @@
+# DefectSight quality gate.
+#
+# The gate is fetched at run time -- this repository contains none of its
+# code. Source never leaves the runner: extraction happens here, and only
+# the resulting numeric metrics are scored.
+
+name: Defect Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  defect-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The gate diffs base...head, so it needs history to find a
+          # merge base. A shallow clone has none.
+          fetch-depth: 0
+
+      - name: Run DefectSight gate
+        id: gate
+        uses: Malsha-Weerasinghe/defect-gate@v1
+        with:
+          dataset: KC1
+          models-source: https://github.com/Malsha-Weerasinghe/defect-gate/releases/download/v1.0.0/defectsight-models-KC1-v1.tar.gz
+          fail-on: fail          # fail | review | never

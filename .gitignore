@@ -1,0 +1,39 @@
+# ---- C build output ----
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.gch
+*.d
+build/
+bin/
+
+# ---- DefectSight gate output ----
+# Reports are regenerated on every run and are published as CI artifacts,
+# so committing them would just create noisy diffs.
+defect-gate-report/
+*_gate_report.json
+*_gate_report.html
+metrics.csv
+
+# Model artifacts are fetched at run time, never vendored here.
+.defect-gate/
+models/
+*.pkl
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Misc ----
+*.log
+tmp/
+.cache/
