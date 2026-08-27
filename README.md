@@ -1,4 +1,4 @@
-# ci-integration
+# cicd-integration
 
 A small C project used to exercise the **DefectSight quality gate** in a
 real CI pipeline.
