@@ -15,7 +15,7 @@ jobs:
   defect-gate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # The gate diffs base...head, so it needs history to find a
           # merge base. A shallow clone has none.
